@@ -258,21 +258,6 @@ pytest tests/integration/
 
 ---
 
-## 🎨 Screenshots
-
-### Dashboard
-![Dashboard](docs/screenshots/dashboard.png)
-
-### AI Analysis
-![AI Analysis](docs/screenshots/analysis.png)
-
-### AI Vaults
-![Vaults](docs/screenshots/vaults.png)
-
-### Market Alerts
-![Alerts](docs/screenshots/alerts.png)
-
----
 
 ## 🏆 Hackathon Impact
 
@@ -383,7 +368,7 @@ npm run dev
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+We welcome contributions! 
 
 ### **How to Contribute**
 1. Fork the repository
@@ -404,9 +389,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Built with ❤️ for the NodeOps Proof of Build Hackathon
 
-- **Developer:** [Your Name]
-- **GitHub:** [@yourusername](https://github.com/yourusername)
-- **Twitter:** [@yourhandle](https://twitter.com/yourhandle)
+- **Developer:** Hanson Braganza
+- **GitHub:** [@kingsonn](https://github.com/kingsonn)
 
 ---
 
@@ -421,30 +405,11 @@ Built with ❤️ for the NodeOps Proof of Build Hackathon
 
 ---
 
-## 📞 Contact & Support
-
-- **Email:** support@autodefi.ai
-- **Discord:** [Join our community](#)
-- **Documentation:** [docs.autodefi.ai](#)
-- **Issues:** [GitHub Issues](https://github.com/yourusername/autodefi-ai/issues)
-
----
-
-## 🌐 Links
-
-- **Live Demo:** https://autodefi.ai
-- **API Docs:** https://api.autodefi.ai/docs
-- **NodeOps Template:** [View on Marketplace](#)
-- **Hackathon Submission:** [NodeOps Portal](#)
-
----
-
 <div align="center">
 
 ### **Built for NodeOps Proof of Build Hackathon 2025**
 
 **Making DeFi Smarter with AI** 🚀
 
-[Demo](https://autodefi.ai) • [Docs](https://docs.autodefi.ai) • [API](https://api.autodefi.ai/docs) • [Deploy](https://app.nodeops.io)
 
 </div>
