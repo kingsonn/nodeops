@@ -1,0 +1,71 @@
+# ======================
+# FastAPI Backend
+# ======================
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+pydantic==2.5.3
+pydantic-settings==2.1.0
+python-multipart==0.0.6
+
+# ======================
+# AI / LLM
+# ======================
+openai==1.10.0
+google-generativeai==0.3.2
+groq==0.4.1
+
+# ======================
+# HTTP & API
+# ======================
+requests==2.31.0
+httpx==0.25.2           # ✅ Compatible with supabase (<0.26), openai, and groq (>=0.23)
+aiohttp==3.9.1
+
+# ======================
+# Database / ORM
+# ======================
+sqlalchemy==2.0.25
+psycopg2-binary==2.9.9
+alembic==1.13.1
+supabase==2.3.5         # Requires httpx<0.26
+gotrue==2.4.2           # Explicitly pinned for compatibility
+
+# ======================
+# Environment & Config
+# ======================
+python-dotenv==1.0.0
+
+# ======================
+# Caching
+# ======================
+redis==5.0.1
+cachetools==5.3.2
+
+# ======================
+# Testing
+# ======================
+pytest==7.4.4
+pytest-asyncio==0.23.3
+pytest-cov==4.1.0
+
+# ======================
+# Utilities
+# ======================
+python-dateutil==2.8.2
+pytz==2024.1
+
+# ======================
+# Scheduling
+# ======================
+apscheduler==3.10.4
+
+# ======================
+# PDF Generation
+# ======================
+reportlab==4.0.7
+
+# ======================
+# CORS & Security
+# ======================
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4

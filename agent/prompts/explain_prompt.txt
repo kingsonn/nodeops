@@ -1,0 +1,15 @@
+You are explaining a DeFi portfolio rebalancing decision to a user.
+
+Previous Recommendation:
+{recommendation}
+
+Market Context:
+{market_context}
+
+Please provide a clear, concise explanation that:
+1. Explains WHY this rebalancing was recommended
+2. Highlights the key factors that influenced the decision
+3. Describes the expected benefits
+4. Mentions any risks or considerations
+
+Keep the explanation user-friendly and avoid excessive technical jargon.

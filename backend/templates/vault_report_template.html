@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Vault Audit Report</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            border-bottom: 3px solid #6366f1;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #111827;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle { color: #6b7280; font-size: 14px; }
+        
+        .meta-info {
+            display: flex;
+            justify-content: space-between;
+            background: #f3f4f6;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .meta-item { flex: 1; }
+        .meta-label {
+            font-size: 12px;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        .meta-value {
+            font-size: 14px;
+            color: #111827;
+            font-weight: 600;
+        }
+        
+        h2 {
+            color: #111827;
+            font-size: 20px;
+            font-weight: 600;
+            border-bottom: 2px solid #6366f1;
+            padding-bottom: 8px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .section { margin-bottom: 30px; }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        th {
+            background: #6366f1;
+            color: white;
+            text-align: left;
+            padding: 12px 10px;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 14px;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .badge-high { background: #fee2e2; color: #991b1b; }
+        .badge-medium { background: #fef3c7; color: #92400e; }
+        .badge-low { background: #d1fae5; color: #065f46; }
+        
+        .ai-reasoning {
+            background: #f3f4f6;
+            border-left: 4px solid #6366f1;
+            padding: 15px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        
+        .performance-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .performance-label {
+            font-size: 12px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        
+        .performance-value {
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e5e7eb;
+            font-size: 12px;
+            color: #6b7280;
+        }
+        
+        .footer .brand {
+            color: #6366f1;
+            font-weight: 700;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>✨ AI Vault Audit Report</h1>
+            <p class="subtitle">Comprehensive AI-Generated Vault Strategy Analysis</p>
+        </div>
+
+        <div class="meta-info">
+            <div class="meta-item">
+                <div class="meta-label">Vault Name</div>
+                <div class="meta-value">{{ vault_name }}</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Vault ID</div>
+                <div class="meta-value">#{{ vault_id }}</div>
+            </div>
+            <div class="meta-item">
+                <div class="meta-label">Generated</div>
+                <div class="meta-value">{{ timestamp }}</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📊 Vault Overview</h2>
+            <p><strong>Risk Level:</strong> 
+                <span class="badge badge-{{ risk_level }}">{{ risk_level }}</span>
+            </p>
+            <p style="margin-top: 10px;"><strong>Description:</strong> {{ ai_description }}</p>
+        </div>
+
+        <div class="section">
+            <h2>💰 Protocol Allocations</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Protocol</th>
+                        <th>Allocation %</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for alloc in allocations %}
+                    <tr>
+                        <td><strong>{{ alloc.protocol_name }}</strong></td>
+                        <td>{{ alloc.percent }}%</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>🧠 AI Reasoning</h2>
+            <div class="ai-reasoning">
+                {{ ai_reasoning }}
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📈 Performance Metrics</h2>
+            <div class="performance-card">
+                <div class="performance-label">Expected APY</div>
+                <div class="performance-value">{{ "%.2f"|format(expected_apy) }}%</div>
+            </div>
+            <div class="performance-card">
+                <div class="performance-label">AI Confidence</div>
+                <div class="performance-value">{{ "%.0f"|format(confidence * 100) }}%</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📅 Vault Timeline</h2>
+            <p><strong>Created:</strong> {{ created_at }}</p>
+            <p><strong>Last Updated:</strong> {{ updated_at }}</p>
+        </div>
+
+        <div class="footer">
+            <p>Generated by <span class="brand">AutoDeFi.AI</span></p>
+            <p>{{ timestamp }} | AI Model: {{ ai_model }}</p>
+            <p style="margin-top: 10px; font-size: 11px;">
+                This report is for informational purposes only. Always conduct your own research.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

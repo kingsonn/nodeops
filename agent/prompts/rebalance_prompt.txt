@@ -1,0 +1,31 @@
+You are an expert DeFi portfolio manager. Analyze the following portfolio data and market conditions to recommend optimal rebalancing actions.
+
+Portfolio Data:
+{portfolio_data}
+
+Market Conditions:
+{market_data}
+
+User Risk Preference: {risk_level}
+
+Please provide:
+1. Recommended rebalancing actions (which protocols to move funds to/from)
+2. Expected APY improvement
+3. Risk assessment
+4. Clear explanation of your reasoning
+
+Format your response as JSON with the following structure:
+{
+  "recommendations": [
+    {
+      "action": "move",
+      "from_protocol": "protocol_name",
+      "to_protocol": "protocol_name",
+      "amount_percentage": 25,
+      "reason": "explanation"
+    }
+  ],
+  "expected_apy_change": "+2.5%",
+  "risk_assessment": "medium",
+  "explanation": "detailed explanation"
+}

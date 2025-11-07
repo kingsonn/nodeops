@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: Application
+metadata:
+  name: autodefi-ai
+  description: AI-powered DeFi portfolio optimizer
+  version: 0.1.0
+  
+spec:
+  # Container configuration
+  image: registry.nodeops.xyz/autodefi-ai:latest
+  
+  # Resource limits
+  resources:
+    cpu: 1000m      # 1 CPU core
+    memory: 2Gi     # 2GB RAM
+    
+  # Port configuration
+  ports:
+    - name: http
+      port: 8000
+      protocol: TCP
+      
+  # Environment variables
+  env:
+    - name: BACKEND_PORT
+      value: "8000"
+    - name: AI_MODEL
+      value: "gpt-4"
+    - name: FALLBACK_TO_RULE_ENGINE
+      value: "true"
+      
+  # Health checks
+  healthCheck:
+    path: /health
+    port: 8000
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    
+  # Scaling configuration
+  scaling:
+    minReplicas: 1
+    maxReplicas: 3
+    targetCPUUtilization: 70
+    
+  # Persistence (if needed)
+  # volumes:
+  #   - name: data
+  #     size: 10Gi
+  #     mountPath: /app/data

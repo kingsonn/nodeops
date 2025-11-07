@@ -1,0 +1,112 @@
+# NodeOps Template - AutoDeFi.AI
+# AI-Powered DeFi Portfolio Strategist
+# Built with FastAPI, Next.js, and Groq LLaMA 3.3
+
+version: 0.1
+
+services:
+  # PostgreSQL Database
+  db:
+    image: postgres:15-alpine
+    imagePullPolicy: Always
+    command: []
+    args: []
+    ports:
+      - containerPort: 5432
+        protocol: TCP
+        expose: false
+    env:
+      - name: POSTGRES_USER
+        value: autodefi
+      - name: POSTGRES_PASSWORD
+        value: '{{.POSTGRES_PASSWORD}}'
+        default: autodefi_secure_password
+        info: Password for PostgreSQL database
+      - name: POSTGRES_DB
+        value: autodefi
+    resourceUsage:
+      idle:
+        cpu: 250
+        memory: 512
+      active:
+        cpu: 500
+        memory: 1024
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    imagePullPolicy: Always
+    command: []
+    args: []
+    ports:
+      - containerPort: 6379
+        protocol: TCP
+        expose: false
+    env: []
+    resourceUsage:
+      idle:
+        cpu: 100
+        memory: 256
+      active:
+        cpu: 250
+        memory: 512
+
+  # AutoDeFi Application (Backend + Frontend)
+  app:
+    image: kingsonnn/autodefi:latest
+    imagePullPolicy: Always
+    command: []
+    args: []
+    ports:
+      - containerPort: 8000
+        protocol: TCP
+        expose: true
+      - containerPort: 3000
+        protocol: TCP
+        expose: true
+    env:
+      - name: DATABASE_URL
+        value: 'postgresql://autodefi:{{.POSTGRES_PASSWORD}}@db:5432/autodefi'
+      - name: REDIS_URL
+        value: 'redis://redis:6379'
+      - name: GROQ_API_KEY
+        value: '{{.GROQ_API_KEY}}'
+        default: ''
+        info: API key for Groq LLaMA 3.3 model access (required)
+      - name: SUPABASE_URL
+        value: '{{.SUPABASE_URL}}'
+        default: ''
+        info: Your Supabase project URL (required)
+      - name: SUPABASE_KEY
+        value: '{{.SUPABASE_KEY}}'
+        default: ''
+        info: Your Supabase anonymous/public key (required)
+      - name: AI_MODEL
+        value: '{{.AI_MODEL}}'
+        default: llama-3.3-70b-versatile
+        info: Groq model to use for AI analysis
+      - name: AI_TEMPERATURE
+        value: '{{.AI_TEMPERATURE}}'
+        default: '0.7'
+        info: Temperature for AI model (0.0-1.0)
+      - name: COINGECKO_API_KEY
+        value: '{{.COINGECKO_API_KEY}}'
+        default: ''
+        info: Optional CoinGecko API key for higher rate limits
+      - name: NEXT_PUBLIC_API_URL
+        value: 'http://localhost:8000'
+        default: 'http://localhost:8000'
+        info: Backend API URL for frontend
+      - name: NEXT_TELEMETRY_DISABLED
+        value: '1'
+      - name: NODE_ENV
+        value: production
+      - name: PYTHONUNBUFFERED
+        value: '1'
+    resourceUsage:
+      idle:
+        cpu: 750
+        memory: 1536
+      active:
+        cpu: 1500
+        memory: 3072
